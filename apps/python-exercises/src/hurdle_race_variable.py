@@ -39,20 +39,17 @@ def at_goal():
     return position >= goal_position
 
 
-def turn_right():
-    """Turn right by turning left three times."""
-    turn_left()
-    turn_left()
-    turn_left()
-
-
 def jump_hurdle():
-    """Jump over a single hurdle."""
+    """Jump over a single hurdle using only turn_left()."""
     turn_left()
     move()
-    turn_right()
+    turn_left()
+    turn_left()
+    turn_left()
     move()
-    turn_right()
+    turn_left()
+    turn_left()
+    turn_left()
     move()
     turn_left()
 

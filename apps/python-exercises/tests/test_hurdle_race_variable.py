@@ -7,7 +7,7 @@ import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
 import hurdle_race_variable
-from hurdle_race_variable import jump_hurdle, run_race, turn_right
+from hurdle_race_variable import jump_hurdle, run_race
 
 
 class TestHurdleRaceVariable(unittest.TestCase):
@@ -18,11 +18,13 @@ class TestHurdleRaceVariable(unittest.TestCase):
         hurdle_race_variable.goal_position = 14
         hurdle_race_variable.hurdles = [2, 5, 8, 11]
     
-    def test_turn_right(self):
-        """Test that turn_right calls turn_left three times."""
-        with patch('hurdle_race_variable.turn_left') as mock_turn_left:
-            turn_right()
-            self.assertEqual(mock_turn_left.call_count, 3)
+    def test_jump_hurdle_uses_only_turn_left(self):
+        """Test that jump_hurdle uses only turn_left (no turn_right)."""
+        with patch('hurdle_race_variable.turn_left') as mock_turn_left, \
+             patch('hurdle_race_variable.move') as mock_move:
+            jump_hurdle()
+            # Should use turn_left 8 times (1 + 3 + 3 + 1)
+            self.assertEqual(mock_turn_left.call_count, 8)
     
     def test_jump_hurdle_sequence(self):
         """Test that jump_hurdle calls functions in correct sequence."""
