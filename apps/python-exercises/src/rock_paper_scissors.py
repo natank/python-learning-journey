@@ -10,6 +10,33 @@ class RockPaperScissors:
         3: "scissors"
     }
     
+    ASCII_ART = {
+        "rock": """
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+""",
+        "paper": """
+     _______
+---'    ____)____
+           ______)
+          _______)
+         _______)
+---.__________)
+""",
+        "scissors": """
+    _______
+---'   __)______
+          ______)
+       __________)
+      (____)
+---.__(___)
+"""
+    }
+    
     WINNING_COMBINATIONS = {
         ("rock", "scissors"),
         ("paper", "rock"),
@@ -33,8 +60,11 @@ class RockPaperScissors:
         """
         print("\nChoose your move:")
         print("1. Rock")
+        print(self.ASCII_ART["rock"])
         print("2. Paper")
+        print(self.ASCII_ART["paper"])
         print("3. Scissors")
+        print(self.ASCII_ART["scissors"])
         
         try:
             choice_num = int(input("Enter your choice (1-3): "))
@@ -85,8 +115,10 @@ class RockPaperScissors:
             user_choice = self.get_user_choice()
             computer_choice = self.get_computer_choice()
             
-            print(f"\nYou chose: {user_choice}")
-            print(f"Computer chose: {computer_choice}")
+            print(f"\n👤 You chose: {user_choice}")
+            print(self.ASCII_ART[user_choice])
+            print(f"🤖 Computer chose: {computer_choice}")
+            print(self.ASCII_ART[computer_choice])
             
             result = self.determine_winner(user_choice, computer_choice)
             
