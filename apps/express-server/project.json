@@ -1,0 +1,24 @@
+{
+  "name": "express-server",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/express-server/src",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "options": {
+        "buildTarget": "express-server:build",
+        "watch": true
+      }
+    },
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/express-server",
+        "main": "apps/express-server/src/main.ts",
+        "tsConfig": "apps/express-server/tsconfig.json"
+      }
+    }
+  }
+}
