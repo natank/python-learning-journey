@@ -21,3 +21,13 @@ npm run express-server
 ```bash
 npm run flask-server
 ```
+
+### Run Python Exercises
+```bash
+npm run python-exercises
+```
+
+### Test Python Exercises
+```bash
+npm run test-python
+```

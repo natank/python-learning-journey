@@ -4,7 +4,9 @@
   "license": "MIT",
   "scripts": {
     "express-server": "nx serve express-server",
-    "flask-server": "nx serve flask-server"
+    "flask-server": "nx serve flask-server",
+    "python-exercises": "nx run-calculator python-exercises",
+    "test-python": "nx test python-exercises"
   },
   "private": true,
   "devDependencies": {

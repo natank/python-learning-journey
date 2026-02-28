@@ -1,0 +1,57 @@
+{
+  "name": "python-exercises",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/python-exercises/src",
+  "projectType": "application",
+  "targets": {
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "source venv/bin/activate && python -m pytest",
+        "cwd": "apps/python-exercises"
+      }
+    },
+    "test-watch": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "python3 -m pytest --watch",
+        "cwd": "apps/python-exercises"
+      }
+    },
+    "install": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pip install -r requirements.txt",
+        "cwd": "apps/python-exercises"
+      }
+    },
+    "run-calculator": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "python3 src/calculator.py",
+        "cwd": "apps/python-exercises"
+      }
+    },
+    "run-strings": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "python3 src/string_utils.py",
+        "cwd": "apps/python-exercises"
+      }
+    },
+    "run-data-structures": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "python3 src/data_structures.py",
+        "cwd": "apps/python-exercises"
+      }
+    },
+    "run-coin-flip": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "python3 src/coin_flip.py",
+        "cwd": "apps/python-exercises"
+      }
+    }
+  }
+}
