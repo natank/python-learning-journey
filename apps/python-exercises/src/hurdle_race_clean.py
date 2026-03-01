@@ -17,7 +17,6 @@ def turn_left():
 
 
 def jump_hurdle():
-    """Execute the sequence to jump over a single hurdle."""
     move()
     turn_left()
     move()
@@ -33,15 +32,9 @@ def jump_hurdle():
 
 
 def race_course():
-    """Complete the entire hurdle race course with 6 hurdles."""
     for _ in range(6):
         jump_hurdle()
 
 
-def main():
-    """Main function to run the hurdle race."""
-    race_course()
+race_course()
 
-
-if __name__ == "__main__":
-    main()
