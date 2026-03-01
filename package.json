@@ -1,6 +1,7 @@
 {
   "name": "projects-monorepo",
   "version": "1.0.0",
+  "description": "A monorepo showcasing Python learning journey with Flask server, algorithms, and exercises demonstrating practical programming skills and problem-solving abilities.",
   "license": "MIT",
   "scripts": {
     "express-server": "nx serve express-server",
