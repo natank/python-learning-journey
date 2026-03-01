@@ -65,6 +65,13 @@ def wall_on_right():
     return not right_is_clear()
 
 
+def turn_right():
+    """Turn 90 degrees right by turning left three times."""
+    turn_left()
+    turn_left()
+    turn_left()
+
+
 def turn_around():
     """Turn 180 degrees."""
     turn_left()
@@ -78,9 +85,7 @@ def climb_up():
     """
     turn_left()
     move()
-    turn_left()
-    turn_left()
-    turn_left()
+    turn_right()
 
 
 def climb_down():
@@ -88,9 +93,7 @@ def climb_down():
     Climb down the hurdle after clearing it.
     Descends until back on ground level.
     """
-    turn_left()
-    turn_left()
-    turn_left()
+    turn_right()
     move()
     turn_left()
 

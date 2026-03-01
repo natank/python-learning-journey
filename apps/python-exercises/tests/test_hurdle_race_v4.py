@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
 import hurdle_race_v4
 from hurdle_race_v4 import (
-    jump_hurdle, run_race, climb_up, climb_down, turn_around
+    jump_hurdle, run_race, climb_up, climb_down, turn_around, turn_right
 )
 
 
@@ -21,6 +21,12 @@ class TestHurdleRaceV4(unittest.TestCase):
         hurdle_race_v4.goal_position = 14
         hurdle_race_v4.hurdles = {2: 2, 5: 1, 8: 3, 11: 2}
     
+    def test_turn_right(self):
+        """Test that turn_right calls turn_left three times."""
+        with patch('hurdle_race_v4.turn_left') as mock_turn_left:
+            turn_right()
+            self.assertEqual(mock_turn_left.call_count, 3)
+    
     def test_turn_around(self):
         """Test that turn_around calls turn_left twice."""
         with patch('hurdle_race_v4.turn_left') as mock_turn_left:
@@ -30,24 +36,28 @@ class TestHurdleRaceV4(unittest.TestCase):
     def test_climb_up_sequence(self):
         """Test that climb_up calls functions in correct sequence."""
         with patch('hurdle_race_v4.move') as mock_move, \
-             patch('hurdle_race_v4.turn_left') as mock_turn_left:
+             patch('hurdle_race_v4.turn_left') as mock_turn_left, \
+             patch('hurdle_race_v4.turn_right') as mock_turn_right:
             
             climb_up()
             
-            # Should call turn_left 4 times (1 + 3)
-            self.assertEqual(mock_turn_left.call_count, 4)
+            # Should call turn_left once and turn_right once
+            self.assertEqual(mock_turn_left.call_count, 1)
+            self.assertEqual(mock_turn_right.call_count, 1)
             # Should call move once
             self.assertEqual(mock_move.call_count, 1)
     
     def test_climb_down_sequence(self):
         """Test that climb_down calls functions in correct sequence."""
         with patch('hurdle_race_v4.move') as mock_move, \
-             patch('hurdle_race_v4.turn_left') as mock_turn_left:
+             patch('hurdle_race_v4.turn_left') as mock_turn_left, \
+             patch('hurdle_race_v4.turn_right') as mock_turn_right:
             
             climb_down()
             
-            # Should call turn_left 4 times (3 + 1)
-            self.assertEqual(mock_turn_left.call_count, 4)
+            # Should call turn_right once and turn_left once
+            self.assertEqual(mock_turn_right.call_count, 1)
+            self.assertEqual(mock_turn_left.call_count, 1)
             # Should call move once
             self.assertEqual(mock_move.call_count, 1)
     
