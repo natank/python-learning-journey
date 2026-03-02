@@ -5,30 +5,30 @@ A collection of practice exercises for learning Python concepts.
 ## Setup
 
 ```bash
-nx install python-exercises
+nx install python-beginner-exercises
 ```
 
 ## Running Exercises
 
 ### Calculator Functions
 ```bash
-nx run-calculator python-exercises
+nx run-calculator python-beginner-exercises
 ```
 
 ### String Utilities
 ```bash
-nx run-strings python-exercises
+nx run-strings python-beginner-exercises
 ```
 
 ### Data Structures
 ```bash
-nx run-data-structures python-exercises
+nx run-data-structures python-beginner-exercises
 ```
 
 ## Testing
 
 ```bash
-nx test python-exercises
+nx test python-beginner-exercises
 ```
 
 ## Exercises Included

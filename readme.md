@@ -49,7 +49,7 @@ npm run flask-server
 #### Python Development
 ```bash
 # Run Python exercises
-npm run python-exercises
+npm run python-beginner-exercises
 
 # Run test suite
 npm run test-python
@@ -70,7 +70,7 @@ This repository emphasizes:
 apps/
 ├── flask-server/          # Python Flask web application
 ├── express-server/        # TypeScript Node.js server
-└── python-exercises/      # Algorithm implementations and tests
+└── python-beginner-exercises/      # Algorithm implementations and tests
 ```
 
 ## 📈 Progress
