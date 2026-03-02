@@ -52,6 +52,13 @@
         "command": "python3 src/coin_flip.py",
         "cwd": "apps/python-beginner-exercises"
       }
+    },
+    "run-caesar-cipher": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "python3 src/caesar_cipher.py",
+        "cwd": "apps/python-beginner-exercises"
+      }
     }
   }
 }
