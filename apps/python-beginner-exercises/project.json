@@ -1,56 +1,56 @@
 {
-  "name": "python-exercises",
+  "name": "python-beginner-exercises",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/python-exercises/src",
+  "sourceRoot": "apps/python-beginner-exercises/src",
   "projectType": "application",
   "targets": {
     "test": {
       "executor": "nx:run-commands",
       "options": {
         "command": "source venv/bin/activate && python -m pytest",
-        "cwd": "apps/python-exercises"
+        "cwd": "apps/python-beginner-exercises"
       }
     },
     "test-watch": {
       "executor": "nx:run-commands",
       "options": {
         "command": "python3 -m pytest --watch",
-        "cwd": "apps/python-exercises"
+        "cwd": "apps/python-beginner-exercises"
       }
     },
     "install": {
       "executor": "nx:run-commands",
       "options": {
         "command": "pip install -r requirements.txt",
-        "cwd": "apps/python-exercises"
+        "cwd": "apps/python-beginner-exercises"
       }
     },
     "run-calculator": {
       "executor": "nx:run-commands",
       "options": {
         "command": "python3 src/calculator.py",
-        "cwd": "apps/python-exercises"
+        "cwd": "apps/python-beginner-exercises"
       }
     },
     "run-strings": {
       "executor": "nx:run-commands",
       "options": {
         "command": "python3 src/string_utils.py",
-        "cwd": "apps/python-exercises"
+        "cwd": "apps/python-beginner-exercises"
       }
     },
     "run-data-structures": {
       "executor": "nx:run-commands",
       "options": {
         "command": "python3 src/data_structures.py",
-        "cwd": "apps/python-exercises"
+        "cwd": "apps/python-beginner-exercises"
       }
     },
     "run-coin-flip": {
       "executor": "nx:run-commands",
       "options": {
         "command": "python3 src/coin_flip.py",
-        "cwd": "apps/python-exercises"
+        "cwd": "apps/python-beginner-exercises"
       }
     }
   }

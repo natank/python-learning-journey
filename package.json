@@ -6,8 +6,8 @@
   "scripts": {
     "express-server": "nx serve express-server",
     "flask-server": "nx serve flask-server",
-    "python-exercises": "nx run-calculator python-exercises",
-    "test-python": "nx test python-exercises"
+    "python-beginner-exercises": "nx run-calculator python-beginner-exercises",
+    "test-python": "nx test python-beginner-exercises"
   },
   "private": true,
   "devDependencies": {
