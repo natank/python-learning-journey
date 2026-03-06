@@ -7,14 +7,14 @@
     "serve": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "python src/main.py",
+        "command": "source venv/bin/activate && python src/main.py",
         "cwd": "apps/flask-server"
       }
     },
     "install": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "pip install -r requirements.txt",
+        "command": "source venv/bin/activate && pip install -r requirements.txt",
         "cwd": "apps/flask-server"
       }
     }
