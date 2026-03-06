@@ -19,7 +19,7 @@ npm install
 ### 2. Install Python Dependencies for Flask Server
 
 ```bash
-cd apps/flask-server
+cd apps/flask-guess-game
 pip install -r requirements.txt
 # Or use a virtual environment (recommended):
 python -m venv venv
@@ -51,9 +51,9 @@ Endpoints:
 Run the Flask server on port 5000:
 
 ```bash
-npm run flask-server
+npm run flask-guess-game
 # Or using nx directly:
-nx serve flask-server
+nx serve flask-guess-game
 ```
 
 The server will be available at: http://localhost:5000
@@ -73,7 +73,7 @@ npm run express-server
 
 **Terminal 2:**
 ```bash
-npm run flask-server
+npm run flask-guess-game
 ```
 
 ## Project Structure
@@ -86,7 +86,7 @@ projects-monorepo/
 │   │   │   └── main.ts         # Express server entry point
 │   │   ├── project.json        # Nx project configuration
 │   │   └── tsconfig.json       # TypeScript configuration
-│   └── flask-server/            # Flask Python application
+│   └── flask-guess-game/        # Flask Python guess the number game
 │       ├── src/
 │       │   └── main.py         # Flask server entry point
 │       ├── requirements.txt    # Python dependencies

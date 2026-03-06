@@ -1,21 +1,21 @@
 {
-  "name": "flask-server",
+  "name": "flask-guess-game",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/flask-server/src",
+  "sourceRoot": "apps/flask-guess-game/src",
   "projectType": "application",
   "targets": {
     "serve": {
       "executor": "nx:run-commands",
       "options": {
         "command": "source venv/bin/activate && python src/main.py",
-        "cwd": "apps/flask-server"
+        "cwd": "apps/flask-guess-game"
       }
     },
     "install": {
       "executor": "nx:run-commands",
       "options": {
         "command": "source venv/bin/activate && pip install -r requirements.txt",
-        "cwd": "apps/flask-server"
+        "cwd": "apps/flask-guess-game"
       }
     }
   }

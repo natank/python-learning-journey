@@ -32,7 +32,7 @@ A comprehensive monorepo showcasing my progression in Python development, featur
 npm install
 
 # Install Python dependencies
-cd apps/flask-server && pip install -r requirements.txt && cd ../..
+cd apps/flask-guess-game && pip install -r requirements.txt && cd ../..
 ```
 
 ### Development Commands
@@ -43,7 +43,7 @@ cd apps/flask-server && pip install -r requirements.txt && cd ../..
 npm run express-server
 
 # Start Flask server (http://localhost:5000)
-npm run flask-server
+npm run flask-guess-game
 ```
 
 #### Python Development
@@ -68,7 +68,7 @@ This repository emphasizes:
 
 ```
 apps/
-├── flask-server/          # Python Flask web application
+├── flask-guess-game/      # Python Flask guess the number game
 ├── express-server/        # TypeScript Node.js server
 └── python-beginner-exercises/      # Algorithm implementations and tests
 ```

@@ -39,7 +39,7 @@ python src/main.py
 
 ### Using nx (from monorepo root):
 ```bash
-nx serve flask-server
+nx serve flask-guess-game
 ```
 
 The server will start on `http://localhost:5000`
@@ -83,7 +83,7 @@ The server will start on `http://localhost:5000`
 ## Project Structure
 
 ```
-apps/flask-server/
+apps/flask-guess-game/
 ├── src/
 │   ├── main.py              # Main Flask application
 │   ├── templates/
