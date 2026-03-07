@@ -1,0 +1,71 @@
+meta {
+  name: GET All Cafes
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/all
+  body: none
+  auth: none
+}
+
+tests {
+  test("Status code is 200", function() {
+    expect(res.status).to.equal(200);
+  });
+  
+  test("Response has cafes array", function() {
+    expect(res.body).to.have.property('cafes');
+    expect(Array.isArray(res.body.cafes)).to.be.true;
+  });
+  
+  test("Cafes array is not empty", function() {
+    expect(res.body.cafes.length).to.be.greaterThan(0);
+  });
+  
+  test("Each cafe has required fields", function() {
+    const cafes = res.body.cafes;
+    cafes.forEach(cafe => {
+      expect(cafe).to.have.property('id');
+      expect(cafe).to.have.property('name');
+      expect(cafe).to.have.property('location');
+      expect(cafe).to.have.property('map_url');
+      expect(cafe).to.have.property('img_url');
+      expect(cafe).to.have.property('seats');
+      expect(cafe).to.have.property('has_toilet');
+      expect(cafe).to.have.property('has_wifi');
+      expect(cafe).to.have.property('has_sockets');
+      expect(cafe).to.have.property('can_take_calls');
+    });
+  });
+}
+
+docs {
+  # GET All Cafes
+  
+  Returns all cafes in the database.
+  
+  ## Response
+  - **200 OK**: Returns array of all cafes
+  
+  ## Example Response
+  ```json
+  {
+    "cafes": [
+      {
+        "id": 1,
+        "name": "Science Gallery Cafe",
+        "location": "Pearse St, Dublin 2",
+        ...
+      },
+      {
+        "id": 2,
+        "name": "The Fumbally",
+        "location": "Fumbally Lane, Dublin 8",
+        ...
+      }
+    ]
+  }
+  ```
+}

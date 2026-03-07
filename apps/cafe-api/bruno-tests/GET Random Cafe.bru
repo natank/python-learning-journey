@@ -1,0 +1,61 @@
+meta {
+  name: GET Random Cafe
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/random
+  body: none
+  auth: none
+}
+
+tests {
+  test("Status code is 200", function() {
+    expect(res.status).to.equal(200);
+  });
+  
+  test("Response has cafe object", function() {
+    expect(res.body).to.have.property('cafe');
+  });
+  
+  test("Cafe has required fields", function() {
+    const cafe = res.body.cafe;
+    expect(cafe).to.have.property('id');
+    expect(cafe).to.have.property('name');
+    expect(cafe).to.have.property('location');
+    expect(cafe).to.have.property('has_wifi');
+    expect(cafe).to.have.property('coffee_price');
+  });
+  
+  test("Boolean fields are boolean type", function() {
+    const cafe = res.body.cafe;
+    expect(typeof cafe.has_wifi).to.equal('boolean');
+    expect(typeof cafe.has_toilet).to.equal('boolean');
+    expect(typeof cafe.has_sockets).to.equal('boolean');
+    expect(typeof cafe.can_take_calls).to.equal('boolean');
+  });
+}
+
+docs {
+  # GET Random Cafe
+  
+  Returns a random cafe from the database.
+  
+  ## Response
+  - **200 OK**: Returns a random cafe object
+  - **404 Not Found**: No cafes in database
+  
+  ## Example Response
+  ```json
+  {
+    "cafe": {
+      "id": 1,
+      "name": "Science Gallery Cafe",
+      "location": "Pearse St, Dublin 2",
+      "has_wifi": true,
+      "coffee_price": "€3.50"
+    }
+  }
+  ```
+}

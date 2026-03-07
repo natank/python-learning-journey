@@ -1,0 +1,38 @@
+meta {
+  name: DELETE Report Closed
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{base_url}}/report-closed/999
+  body: none
+  auth: none
+}
+
+tests {
+  test("Status code is appropriate", function() {
+    // This endpoint is not yet implemented
+    // Update tests once implementation is complete
+    expect([200, 404, 501]).to.include(res.status);
+  });
+}
+
+docs {
+  # DELETE Report Closed
+  
+  Delete a cafe from the database (report as closed).
+  
+  ## URL Parameters
+  - `cafe_id`: ID of the cafe to delete
+  
+  ## Response
+  - **200 OK**: Cafe successfully deleted
+  - **404 Not Found**: Cafe not found
+  
+  ## Status
+  ⚠️ **Not yet implemented** - Returns TODO message
+  
+  ## Note
+  Using cafe ID 999 (non-existent) for safe testing
+}

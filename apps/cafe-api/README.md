@@ -202,9 +202,42 @@ The API will be available at `http://localhost:5000`
 
 ## Testing
 
+### Unit Tests
+
+Run Python unit tests:
 ```bash
-nx test cafe-api
+nx run cafe-api:test
 ```
+
+### API Testing with Bruno
+
+The project includes a comprehensive Bruno API test collection for manual and automated testing.
+
+**Quick Start**:
+```bash
+# 1. Install Bruno
+brew install bruno
+
+# 2. Start the API
+nx run cafe-api:podman:up
+
+# 3. Open Bruno and load collection
+# File → Open Collection → apps/cafe-api/bruno-tests
+```
+
+**Collection Includes**:
+- ✅ All implemented endpoints (GET /random, /all, /search, POST /add)
+- ✅ Automated test assertions
+- ✅ Pre-configured environments (Local & Podman)
+- ✅ Request/response documentation
+- ✅ Form data examples
+
+**Documentation**: See [`bruno-tests/README.md`](./bruno-tests/README.md) for complete guide.
+
+**Run All Tests**:
+- Open collection in Bruno
+- Right-click collection root → "Run Collection"
+- View aggregated test results
 
 ## Environment Variables
 

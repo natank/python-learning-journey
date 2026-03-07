@@ -1,0 +1,214 @@
+[
+  {
+    "iterationIndex": 0,
+    "results": [
+      {
+        "test": {
+          "filename": "GET Random Cafe.bru"
+        },
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:5000/random",
+          "headers": {
+            "content-type": null
+          }
+        },
+        "response": {
+          "status": "error",
+          "statusText": null,
+          "headers": null,
+          "data": null,
+          "url": null,
+          "responseTime": 0
+        },
+        "error": "socket hang up",
+        "status": "error",
+        "assertionResults": [],
+        "testResults": [],
+        "preRequestTestResults": [],
+        "postResponseTestResults": [],
+        "shouldStopRunnerExecution": false,
+        "runDuration": 127.4747615,
+        "name": "GET Random Cafe",
+        "path": "GET Random Cafe",
+        "iterationIndex": 0
+      },
+      {
+        "test": {
+          "filename": "GET All Cafes.bru"
+        },
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:5000/all",
+          "headers": {
+            "content-type": null
+          }
+        },
+        "response": {
+          "status": "error",
+          "statusText": null,
+          "headers": null,
+          "data": null,
+          "url": null,
+          "responseTime": 0
+        },
+        "error": "socket hang up",
+        "status": "error",
+        "assertionResults": [],
+        "testResults": [],
+        "preRequestTestResults": [],
+        "postResponseTestResults": [],
+        "shouldStopRunnerExecution": false,
+        "runDuration": 127.448871542,
+        "name": "GET All Cafes",
+        "path": "GET All Cafes",
+        "iterationIndex": 0
+      },
+      {
+        "test": {
+          "filename": "GET Search Cafes.bru"
+        },
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:5000/search?location=Dublin 2",
+          "headers": {
+            "content-type": null
+          }
+        },
+        "response": {
+          "status": "error",
+          "statusText": null,
+          "headers": null,
+          "data": null,
+          "url": null,
+          "responseTime": 0
+        },
+        "error": "socket hang up",
+        "status": "error",
+        "assertionResults": [],
+        "testResults": [],
+        "preRequestTestResults": [],
+        "postResponseTestResults": [],
+        "shouldStopRunnerExecution": false,
+        "runDuration": 127.358985,
+        "name": "GET Search Cafes",
+        "path": "GET Search Cafes",
+        "iterationIndex": 0
+      },
+      {
+        "test": {
+          "filename": "POST Add Cafe.bru"
+        },
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:5000/add",
+          "headers": {
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          "data": "name=Bruno+Test+Cafe&map_url=https%3A%2F%2Fgoo.gl%2Fmaps%2Fbruno-test&img_url=https%3A%2F%2Fexample.com%2Fbruno-test.jpg&location=Test+Street%2C+Dublin+1&seats=25-35&has_toilet=1&has_wifi=1&has_sockets=1&can_take_calls=0&coffee_price=%E2%82%AC3.75"
+        },
+        "response": {
+          "status": "error",
+          "statusText": null,
+          "headers": null,
+          "data": null,
+          "url": null,
+          "responseTime": 0
+        },
+        "error": "socket hang up",
+        "status": "error",
+        "assertionResults": [],
+        "testResults": [],
+        "preRequestTestResults": [],
+        "postResponseTestResults": [],
+        "shouldStopRunnerExecution": false,
+        "runDuration": 127.442373541,
+        "name": "POST Add Cafe",
+        "path": "POST Add Cafe",
+        "iterationIndex": 0
+      },
+      {
+        "test": {
+          "filename": "PATCH Update Price.bru"
+        },
+        "request": {
+          "method": "PATCH",
+          "url": "http://localhost:5000/update-price/1",
+          "headers": {
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          "data": "new_price=%E2%82%AC4.00"
+        },
+        "response": {
+          "status": "error",
+          "statusText": null,
+          "headers": null,
+          "data": null,
+          "url": null,
+          "responseTime": 0
+        },
+        "error": "socket hang up",
+        "status": "error",
+        "assertionResults": [],
+        "testResults": [],
+        "preRequestTestResults": [],
+        "postResponseTestResults": [],
+        "shouldStopRunnerExecution": false,
+        "runDuration": 127.402581042,
+        "name": "PATCH Update Price",
+        "path": "PATCH Update Price",
+        "iterationIndex": 0
+      },
+      {
+        "test": {
+          "filename": "DELETE Report Closed.bru"
+        },
+        "request": {
+          "method": "DELETE",
+          "url": "http://localhost:5000/report-closed/999",
+          "headers": {
+            "content-type": null
+          }
+        },
+        "response": {
+          "status": "error",
+          "statusText": null,
+          "headers": null,
+          "data": null,
+          "url": null,
+          "responseTime": 0
+        },
+        "error": "socket hang up",
+        "status": "error",
+        "assertionResults": [],
+        "testResults": [],
+        "preRequestTestResults": [],
+        "postResponseTestResults": [],
+        "shouldStopRunnerExecution": false,
+        "runDuration": 127.361363084,
+        "name": "DELETE Report Closed",
+        "path": "DELETE Report Closed",
+        "iterationIndex": 0
+      }
+    ],
+    "summary": {
+      "totalRequests": 6,
+      "passedRequests": 0,
+      "failedRequests": 0,
+      "errorRequests": 6,
+      "skippedRequests": 0,
+      "totalAssertions": 0,
+      "passedAssertions": 0,
+      "failedAssertions": 0,
+      "totalTests": 0,
+      "passedTests": 0,
+      "failedTests": 0,
+      "totalPreRequestTests": 0,
+      "passedPreRequestTests": 0,
+      "failedPreRequestTests": 0,
+      "totalPostResponseTests": 0,
+      "passedPostResponseTests": 0,
+      "failedPostResponseTests": 0
+    }
+  }
+]

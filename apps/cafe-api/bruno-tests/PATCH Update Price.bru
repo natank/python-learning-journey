@@ -1,0 +1,42 @@
+meta {
+  name: PATCH Update Price
+  type: http
+  seq: 5
+}
+
+patch {
+  url: {{base_url}}/update-price/1
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  new_price: €4.00
+}
+
+tests {
+  test("Status code is 200 or appropriate", function() {
+    // This endpoint is not yet implemented
+    // Update tests once implementation is complete
+    expect([200, 404, 501]).to.include(res.status);
+  });
+}
+
+docs {
+  # PATCH Update Price
+  
+  Update the coffee price for a specific cafe.
+  
+  ## URL Parameters
+  - `cafe_id`: ID of the cafe to update
+  
+  ## Request Body (form-urlencoded)
+  - `new_price`: New coffee price
+  
+  ## Response
+  - **200 OK**: Price successfully updated
+  - **404 Not Found**: Cafe not found
+  
+  ## Status
+  ⚠️ **Not yet implemented** - Returns TODO message
+}
