@@ -118,12 +118,32 @@ def add_cafe():
 
 @app.route("/update-price/<int:cafe_id>", methods=["PATCH"])
 def update_price(cafe_id):
-    return jsonify(message=f"TODO: Implement PATCH update price for cafe {cafe_id}")
+    new_price = request.form.get("new_price")
+    
+    if not new_price:
+        return jsonify(error="Missing required parameter: new_price"), 400
+    
+    cafe = db.session.query(Cafe).filter_by(id=cafe_id).first()
+    
+    if cafe:
+        cafe.coffee_price = new_price
+        db.session.commit()
+        return jsonify(success="Successfully updated the price", cafe=cafe.to_dict()), 200
+    else:
+        return jsonify(error="Cafe not found"), 404
 
 
 @app.route("/report-closed/<int:cafe_id>", methods=["DELETE"])
 def delete_cafe(cafe_id):
-    return jsonify(message=f"TODO: Implement DELETE cafe {cafe_id}")
+    cafe = db.session.query(Cafe).filter_by(id=cafe_id).first()
+    
+    if cafe:
+        cafe_name = cafe.name
+        db.session.delete(cafe)
+        db.session.commit()
+        return jsonify(success=f"Successfully deleted {cafe_name}"), 200
+    else:
+        return jsonify(error="Cafe not found"), 404
 
 
 if __name__ == '__main__':

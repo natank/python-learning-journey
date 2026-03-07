@@ -11,10 +11,13 @@ delete {
 }
 
 tests {
-  test("Status code is appropriate", function() {
-    // This endpoint is not yet implemented
-    // Update tests once implementation is complete
-    expect([200, 404, 501]).to.include(res.status);
+  test("Status code is 404 for non-existent cafe", function() {
+    expect(res.status).to.equal(404);
+  });
+  
+  test("Response has error message", function() {
+    expect(res.body).to.have.property('error');
+    expect(res.body.error).to.equal('Cafe not found');
   });
 }
 
@@ -31,8 +34,23 @@ docs {
   - **404 Not Found**: Cafe not found
   
   ## Status
-  ⚠️ **Not yet implemented** - Returns TODO message
+  ✅ **Implemented** - Fully functional
+  
+  ## Example Success Response (200)
+  ```json
+  {
+    "success": "Successfully deleted Science Gallery Cafe"
+  }
+  ```
+  
+  ## Example Error Response (404)
+  ```json
+  {
+    "error": "Cafe not found"
+  }
+  ```
   
   ## Note
-  Using cafe ID 999 (non-existent) for safe testing
+  This test uses cafe ID 999 (non-existent) to safely test error handling.
+  To test successful deletion, use an existing cafe ID (e.g., 1-9).
 }
