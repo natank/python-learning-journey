@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+        }
+        .endpoint {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .method {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .get { background-color: #61affe; color: white; }
+        .post { background-color: #49cc90; color: white; }
+        .patch { background-color: #fca130; color: white; }
+        .delete { background-color: #f93e3e; color: white; }
+    </style>
+</head>
+<body>
+    <h1>☕ Cafe API</h1>
+    <p>Welcome to the Cafe REST API. Below are the available endpoints:</p>
+    
+    <div class="endpoint">
+        <span class="method get">GET</span>
+        <strong>/random</strong> - Get a random cafe
+    </div>
+    
+    <div class="endpoint">
+        <span class="method get">GET</span>
+        <strong>/all</strong> - Get all cafes
+    </div>
+    
+    <div class="endpoint">
+        <span class="method get">GET</span>
+        <strong>/search?location=&lt;location&gt;</strong> - Search cafes by location
+    </div>
+    
+    <div class="endpoint">
+        <span class="method post">POST</span>
+        <strong>/add</strong> - Add a new cafe
+    </div>
+    
+    <div class="endpoint">
+        <span class="method patch">PATCH</span>
+        <strong>/update-price/&lt;cafe_id&gt;</strong> - Update cafe coffee price
+    </div>
+    
+    <div class="endpoint">
+        <span class="method delete">DELETE</span>
+        <strong>/report-closed/&lt;cafe_id&gt;</strong> - Delete a cafe
+    </div>
+</body>
+</html>

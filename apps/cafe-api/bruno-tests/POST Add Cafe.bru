@@ -1,0 +1,91 @@
+meta {
+  name: POST Add Cafe
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{base_url}}/add
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  name: Bruno Test Cafe
+  map_url: https://goo.gl/maps/bruno-test
+  img_url: https://example.com/bruno-test.jpg
+  location: Test Street, Dublin 1
+  seats: 25-35
+  has_toilet: 1
+  has_wifi: 1
+  has_sockets: 1
+  can_take_calls: 0
+  coffee_price: €3.75
+}
+
+tests {
+  test("Status code is 201", function() {
+    expect(res.status).to.equal(201);
+  });
+  
+  test("Response has success message", function() {
+    expect(res.body).to.have.property('success');
+    expect(res.body.success).to.include('Successfully added');
+  });
+  
+  test("Response includes created cafe", function() {
+    expect(res.body).to.have.property('cafe');
+    const cafe = res.body.cafe;
+    expect(cafe).to.have.property('id');
+    expect(cafe.name).to.equal('Bruno Test Cafe');
+    expect(cafe.location).to.equal('Test Street, Dublin 1');
+  });
+  
+  test("Boolean fields are correctly set", function() {
+    const cafe = res.body.cafe;
+    expect(cafe.has_toilet).to.be.true;
+    expect(cafe.has_wifi).to.be.true;
+    expect(cafe.has_sockets).to.be.true;
+    expect(cafe.can_take_calls).to.be.false;
+  });
+  
+  test("Coffee price is set correctly", function() {
+    const cafe = res.body.cafe;
+    expect(cafe.coffee_price).to.equal('€3.75');
+  });
+}
+
+docs {
+  # POST Add Cafe
+  
+  Create a new cafe entry in the database.
+  
+  ## Request Body (form-urlencoded)
+  - `name` (required): Cafe name
+  - `map_url` (required): Google Maps URL
+  - `img_url` (required): Image URL
+  - `location` (required): Location description
+  - `seats` (required): Seating capacity
+  - `has_toilet` (required): 1 or 0
+  - `has_wifi` (required): 1 or 0
+  - `has_sockets` (required): 1 or 0
+  - `can_take_calls` (required): 1 or 0
+  - `coffee_price` (optional): Price string
+  
+  ## Response
+  - **201 Created**: Cafe successfully created
+  - **400 Bad Request**: Invalid data or duplicate name
+  
+  ## Example Response
+  ```json
+  {
+    "success": "Successfully added the new cafe",
+    "cafe": {
+      "id": 10,
+      "name": "Bruno Test Cafe",
+      "location": "Test Street, Dublin 1",
+      ...
+    }
+  }
+  ```
+}

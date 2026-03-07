@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: docker.io/library/postgres:16-alpine
+    container_name: cafe-api-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-cafe_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cafe_password}
+      POSTGRES_DB: ${POSTGRES_DB:-cafe_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-cafe_user}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  cafe-api:
+    build:
+      context: .
+      dockerfile: Containerfile
+    container_name: cafe-api-app
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-cafe_user}:${POSTGRES_PASSWORD:-cafe_password}@postgres:5432/${POSTGRES_DB:-cafe_db}
+      FLASK_ENV: ${FLASK_ENV:-development}
+      FLASK_DEBUG: ${FLASK_DEBUG:-1}
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./src:/app/src
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

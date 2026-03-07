@@ -1,0 +1,6 @@
+# Bruno temporary files
+*.tmp
+.bruno/
+
+# Environment-specific overrides (if needed)
+environments/*.local.bru

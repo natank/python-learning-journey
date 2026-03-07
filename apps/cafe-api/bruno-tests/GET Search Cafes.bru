@@ -1,0 +1,75 @@
+meta {
+  name: GET Search Cafes
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{base_url}}/search?location=Dublin 2
+  body: none
+  auth: none
+}
+
+params:query {
+  location: Dublin 2
+}
+
+tests {
+  test("Status code is 200", function() {
+    expect(res.status).to.equal(200);
+  });
+  
+  test("Response has cafes array", function() {
+    expect(res.body).to.have.property('cafes');
+    expect(Array.isArray(res.body.cafes)).to.be.true;
+  });
+  
+  test("All cafes match location filter", function() {
+    const cafes = res.body.cafes;
+    cafes.forEach(cafe => {
+      expect(cafe.location.toLowerCase()).to.include('dublin 2');
+    });
+  });
+  
+  test("Each cafe has required fields", function() {
+    const cafes = res.body.cafes;
+    cafes.forEach(cafe => {
+      expect(cafe).to.have.property('id');
+      expect(cafe).to.have.property('name');
+      expect(cafe).to.have.property('location');
+    });
+  });
+}
+
+docs {
+  # GET Search Cafes
+  
+  Search for cafes by location (case-insensitive partial match).
+  
+  ## Query Parameters
+  - `location` (required): Location to search for
+  
+  ## Response
+  - **200 OK**: Returns array of matching cafes
+  - **400 Bad Request**: Missing location parameter
+  - **404 Not Found**: No cafes found at that location
+  
+  ## Example Request
+  ```
+  GET /search?location=Dublin 2
+  ```
+  
+  ## Example Response
+  ```json
+  {
+    "cafes": [
+      {
+        "id": 1,
+        "name": "Science Gallery Cafe",
+        "location": "Pearse St, Dublin 2",
+        ...
+      }
+    ]
+  }
+  ```
+}

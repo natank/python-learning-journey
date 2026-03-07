@@ -1,0 +1,56 @@
+meta {
+  name: DELETE Report Closed
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{base_url}}/report-closed/999
+  body: none
+  auth: none
+}
+
+tests {
+  test("Status code is 404 for non-existent cafe", function() {
+    expect(res.status).to.equal(404);
+  });
+  
+  test("Response has error message", function() {
+    expect(res.body).to.have.property('error');
+    expect(res.body.error).to.equal('Cafe not found');
+  });
+}
+
+docs {
+  # DELETE Report Closed
+  
+  Delete a cafe from the database (report as closed).
+  
+  ## URL Parameters
+  - `cafe_id`: ID of the cafe to delete
+  
+  ## Response
+  - **200 OK**: Cafe successfully deleted
+  - **404 Not Found**: Cafe not found
+  
+  ## Status
+  ✅ **Implemented** - Fully functional
+  
+  ## Example Success Response (200)
+  ```json
+  {
+    "success": "Successfully deleted Science Gallery Cafe"
+  }
+  ```
+  
+  ## Example Error Response (404)
+  ```json
+  {
+    "error": "Cafe not found"
+  }
+  ```
+  
+  ## Note
+  This test uses cafe ID 999 (non-existent) to safely test error handling.
+  To test successful deletion, use an existing cafe ID (e.g., 1-9).
+}

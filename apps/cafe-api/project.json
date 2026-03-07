@@ -1,0 +1,57 @@
+{
+  "name": "cafe-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/cafe-api/src",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "source venv/bin/activate && python src/main.py",
+        "cwd": "apps/cafe-api"
+      }
+    },
+    "install": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "python3.13 -m venv venv && source venv/bin/activate && pip install -r requirements.txt",
+        "cwd": "apps/cafe-api"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "source venv/bin/activate && pytest",
+        "cwd": "apps/cafe-api"
+      }
+    },
+    "podman:up": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "podman-compose up --build -d",
+        "cwd": "apps/cafe-api"
+      }
+    },
+    "podman:down": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "podman-compose down",
+        "cwd": "apps/cafe-api"
+      }
+    },
+    "podman:logs": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "podman-compose logs -f cafe-api",
+        "cwd": "apps/cafe-api"
+      }
+    },
+    "podman:restart": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "podman-compose restart cafe-api",
+        "cwd": "apps/cafe-api"
+      }
+    }
+  }
+}

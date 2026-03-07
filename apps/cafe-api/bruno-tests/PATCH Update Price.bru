@@ -1,0 +1,78 @@
+meta {
+  name: PATCH Update Price
+  type: http
+  seq: 5
+}
+
+patch {
+  url: {{base_url}}/update-price/1
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  new_price: €4.00
+}
+
+tests {
+  test("Status code is 200", function() {
+    expect(res.status).to.equal(200);
+  });
+  
+  test("Response has success message", function() {
+    expect(res.body).to.have.property('success');
+    expect(res.body.success).to.include('Successfully updated');
+  });
+  
+  test("Response includes updated cafe", function() {
+    expect(res.body).to.have.property('cafe');
+    const cafe = res.body.cafe;
+    expect(cafe).to.have.property('id');
+    expect(cafe.id).to.equal(1);
+  });
+  
+  test("Coffee price is updated correctly", function() {
+    const cafe = res.body.cafe;
+    expect(cafe.coffee_price).to.equal('€4.00');
+  });
+  
+  test("Other cafe fields remain unchanged", function() {
+    const cafe = res.body.cafe;
+    expect(cafe).to.have.property('name');
+    expect(cafe).to.have.property('location');
+    expect(cafe).to.have.property('has_wifi');
+  });
+}
+
+docs {
+  # PATCH Update Price
+  
+  Update the coffee price for a specific cafe.
+  
+  ## URL Parameters
+  - `cafe_id`: ID of the cafe to update
+  
+  ## Request Body (form-urlencoded)
+  - `new_price`: New coffee price (required)
+  
+  ## Response
+  - **200 OK**: Price successfully updated
+  - **400 Bad Request**: Missing new_price parameter
+  - **404 Not Found**: Cafe not found
+  
+  ## Status
+  ✅ **Implemented** - Fully functional
+  
+  ## Example Response
+  ```json
+  {
+    "success": "Successfully updated the price",
+    "cafe": {
+      "id": 1,
+      "name": "Science Gallery Cafe",
+      "coffee_price": "€4.00",
+      ...
+    }
+  }
+  ```
+}
